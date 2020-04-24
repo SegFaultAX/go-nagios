@@ -13,7 +13,7 @@ Guidelines](https://nagios-plugins.org/doc/guidelines.html).
 
 ### Range
 
-Ref: [Nagios Documentation](https://nagios-plugins.org/doc/guidelines.html)
+Ref: [Nagios Documentation](https://nagios-plugins.org/doc/guidelines.html#THRESHOLDFORMAT)
 
 The Range type represents a Nagios threshold range.
 
