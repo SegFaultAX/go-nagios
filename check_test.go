@@ -1,6 +1,7 @@
 package nagios
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -77,11 +78,13 @@ func TestCheckString(t *testing.T) {
 		t.Errorf("expected unknown output, was %s", unknown)
 	}
 
-	pd := NewPerfData("a", 123, "kb")
+	pd1 := NewPerfData("a", 123, "kb")
+	pd2 := NewPerfData("b", 456, "kb")
 	pdc := NewCheck()
-	pdc.AddPerfData(pd)
+	pdc.AddPerfData(pd1)
+	pdc.AddPerfData(pd2)
 	pdc.OK("all good")
-	if pdc.String() != "OK: all good|"+pd.String() {
+	if pdc.String() != fmt.Sprintf("OK: all good|%s, %s", pd1, pd2) {
 		t.Errorf("expected ok with perf data output, was %s", pdc)
 	}
 }

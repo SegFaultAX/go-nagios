@@ -79,7 +79,7 @@ func (c *Check) String() string {
 		for _, d := range c.PerfData {
 			pd = append(pd, d.String())
 		}
-		msg = fmt.Sprintf("%s|%s", msg, strings.Join(pd, "|"))
+		msg = fmt.Sprintf("%s|%s", msg, strings.Join(pd, ", "))
 	}
 
 	return msg
