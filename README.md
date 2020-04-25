@@ -11,11 +11,33 @@ Guidelines](https://nagios-plugins.org/doc/guidelines.html).
 
 ## Usage
 
+### Check
+
+The `Check` type represents a very barebones Nagios check. A complete example of
+how to use `Check` is in `examples/check`.
+
+### RangeCheck
+
+The `RangeCheck` type represents a class of Nagios checks that are specifically
+checking ranges of numerical values. This logic is easy to implement yourself
+with the normal `Check` type, but it's repetitive to do so. `RangeCheck` offers
+a simple API for setting warning and critical ranges for your check. See a
+complete example in `examples/rangecheck`.
+
+### PerfData
+
+The `PerfData` type represents Nagios performance data. Many monitoring systems
+(such as Nagios and Sensu) will interpret this data and store it for later
+querying. You can read about Nagios performance data
+[here](http://nagios-plugins.org/doc/guidelines.html#AEN200). Both the `Check`
+and `RangeCheck` types supporting adding arbitrary performance data to the check
+results. See the `examples/` directory on how to do that.
+
 ### Range
 
-Ref: [Nagios Documentation](https://nagios-plugins.org/doc/guidelines.html#THRESHOLDFORMAT)
+The `Range` type represents a Nagios threshold range.
 
-The Range type represents a Nagios threshold range.
+Ref: [Nagios Documentation](https://nagios-plugins.org/doc/guidelines.html#THRESHOLDFORMAT)
 
 
 ```go

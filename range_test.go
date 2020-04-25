@@ -80,7 +80,7 @@ func TestInvalidParseRange(t *testing.T) {
 	}
 }
 
-func TestString(t *testing.T) {
+func TestRangeString(t *testing.T) {
 	examples := map[string]string{
 		"1":           "1",
 		"1:2":         "1:2",
