@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/segfaultax/go-nagios/util"
 )
 
 // PerfData is Nagios performance data
@@ -26,7 +28,7 @@ func NewPerfData(label string, value float64, units string) PerfData {
 	}
 }
 
-// NewPerfData creates a complete Nagios Performance Data object with all range information
+// NewPerfDataWithRanges creates a complete Nagios Performance Data object with all range information
 func NewPerfDataWithRanges(label string, value float64, units string, warn, crit *Range, min, max float64) PerfData {
 	return PerfData{
 		Label: label,
@@ -40,7 +42,7 @@ func NewPerfDataWithRanges(label string, value float64, units string, warn, crit
 }
 
 func (pd PerfData) String() string {
-	s := fmt.Sprintf("%s=%s%s", pd.Label, strconv.FormatFloat(pd.Value, 'f', -1, 64), pd.Units)
+	s := fmt.Sprintf("%s=%s%s", pd.Label, util.PrettyFloat(pd.Value, 6), pd.Units)
 	args := make([]string, 4)
 	if pd.Warn != nil {
 		args[0] = pd.Warn.String()
